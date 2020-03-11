@@ -13,19 +13,19 @@ void reservation_en_memoire(int n, MATRICE *g) {
     }
 }
 
-void print_matrice(int n, MATRICE *g) {
+void print_matrice(MATRICE *g) {
     printf("Affichage de la matrice\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (j != n - 1) printf("%d | ", g->M[i][j]);
+    for (int i = 0; i < g->n; i++) {
+        for (int j = 0; j < g->n; j++) {
+            if (j != g->n - 1) printf("%d | ", g->M[i][j]);
             else printf("%d", g->M[i][j]);
         }
         printf("\n");
     }
 }
 
-void liberation_matrice(int n, MATRICE *g) {
-    for (int i = 0; i < n; i++) {
+void liberation_matrice(MATRICE *g) {
+    for (int i = 0; i < g->n; i++) {
         free(g->M[i]);
     }
     free(g->M);
@@ -46,25 +46,29 @@ int est_successeur(MATRICE *g, SID i, SID j) {
 }
 
 void calcul_degres(MATRICE *g, SID I, int *dplus, int *dmoins) {
-    int entrant, sortant;
-    dplus = (int*)malloc(I*sizeof(int));
-    dmoins = (int*)malloc(I*sizeof(int));
-    for (int s = 0; s < I; s++) {
-        entrant = 0;
-        sortant = 0;
-        for (int i = 0; i < I; i++) {
-            if (est_successeur(g, i, s)) entrant++;
-            if (est_successeur(g, s, i)) sortant++;
-        }
-        dplus[s] = sortant;
-        dmoins[s] = entrant;
+    for (int i = 0; i < g->n; i++) {
+        if (est_successeur(g, i, I)) (*dmoins)++;
+        if (est_successeur(g, I, i)) (*dplus)++;
     }
-    afficher_degres(I, dplus, dmoins);
+    
 }
 
-void afficher_degres(int n, int *dplus, int *dmoins) {
-    printf("Affichage des degres entrants et sortants\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d(E:%d, S:%d)\n", i, dmoins[i], dplus[i]);
+void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins) {
+    *dplus = (int*)malloc(g->n * sizeof(int));
+    *dmoins = (int*)malloc(g->n * sizeof(int));
+    for (int i = 0; i < g->n; i++) {
+        int plus = 0;
+        int moins = 0;
+
+        calcul_degres(g, i, &plus, &moins);
+        (*dplus)[i] = plus;
+        (*dmoins)[i] = moins;
+
     }
+    
+}
+
+
+void copie_graphe(MATRICE *g1, MATRICE *g2) {
+
 }
