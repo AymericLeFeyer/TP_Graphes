@@ -22,12 +22,13 @@ int main(int argc, char** argv) {
     // Lancement de la fonction permettant de calculer tous les degres
     calcul_tous_degres(&m, &dplus, &dmoins);
     // Affichage des degres
-    for (int i = 0; i < SIZE; i++) {
-        printf("%d, %d\n", dplus[i], dmoins[i]);
-    }
+    // for (int i = 0; i < SIZE; i++) {
+    //     printf("%d, %d\n", dplus[i], dmoins[i]);
+    // }
     // Copie dans m2
     copie_graphe(&m, &m2);
     // print_matrice(&m2);
+    ecrire_graphe(&m, "test.txt");
     
 
     return EXIT_SUCCESS;

@@ -89,3 +89,28 @@ void copie_graphe(MATRICE *g1, MATRICE *g2) {
         }
     }
 }
+
+void lire_graphe(char*nom, MATRICE *g) {
+    FILE* f = NULL;
+    f = fopen(nom, "r");
+    fscanf(f, "%d", g->n);
+    for (int i = 0; i < g->n; i++) {
+        for (int j = 0; j < g->n; j++) {
+            fprintf(f, "%d ", g->M[i][j]);
+        }
+        fprintf(f, "\n");
+    }
+
+}
+
+void ecrire_graphe(MATRICE *g, char *nom) {
+    FILE* f = NULL;
+    f = fopen(nom, "w");
+    fprintf(f, "%d\n", g->n);
+    for (int i = 0; i < g->n; i++) {
+        for (int j = 0; j < g->n; j++) {
+            fprintf(f, "%d ", g->M[i][j]);
+        }
+        fprintf(f, "\n");
+    }
+}

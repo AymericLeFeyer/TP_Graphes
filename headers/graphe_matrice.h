@@ -38,3 +38,9 @@ void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins);
 
 void copie_graphe(MATRICE *g1, MATRICE *g2);
 // Copie du graphe g1 dans le graphe g2
+
+void lire_graphe(char *nom, MATRICE *g);
+// Lit un graphe depuis le fichier nom et met le contenu dans g
+
+void ecrire_graphe(MATRICE *g, char *nom);
+// Ecrit le contenu du graphe g dans le fichier nom
