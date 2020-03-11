@@ -8,11 +8,13 @@
 
 int main(int argc, char** argv) {
     MATRICE m;
+    int *dplus, *dmoins;
 
     reservation_en_memoire(SIZE, &m);
     ajouter_arc(&m, 1, 2);
+    ajouter_arc(&m, 2, 3);
     print_matrice(SIZE, &m);
-    printf("%d\n", est_successeur(&m, 1, 2));
+    calcul_degres(&m, SIZE, dplus, dmoins);
 
     return EXIT_SUCCESS;
     

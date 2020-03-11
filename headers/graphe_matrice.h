@@ -23,3 +23,12 @@ void retirer_arc(MATRICE *g, SID i, SID j);
 
 int est_successeur(MATRICE *g, SID i, SID j);
 // Retourne 1 si j est successeur de i, 0 sinon
+
+void calcul_degres(MATRICE *g, SID I, int *dplus, int *dmoins);
+// Generation de deux tableaux, dplus et dmoins, contenant pour chaque
+// sommet i son degre sortant (dplus[i]) et son degre entrant (dmoins[i])
+// Degre entrant : nombre d'arc entrant dans s
+// Degre sortant : nombre d'arc sortant de s
+
+void afficher_degres(int n, int *dplus, int *dmoins);
+// Affiche les degres entrants et sortants pour tous les sommets

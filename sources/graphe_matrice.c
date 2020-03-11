@@ -14,6 +14,7 @@ void reservation_en_memoire(int n, MATRICE *g) {
 }
 
 void print_matrice(int n, MATRICE *g) {
+    printf("Affichage de la matrice\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (j != n - 1) printf("%d | ", g->M[i][j]);
@@ -42,4 +43,28 @@ void retirer_arc(MATRICE *g, SID i, SID j) {
 
 int est_successeur(MATRICE *g, SID i, SID j) {
     return g->M[i][j];
+}
+
+void calcul_degres(MATRICE *g, SID I, int *dplus, int *dmoins) {
+    int entrant, sortant;
+    dplus = (int*)malloc(I*sizeof(int));
+    dmoins = (int*)malloc(I*sizeof(int));
+    for (int s = 0; s < I; s++) {
+        entrant = 0;
+        sortant = 0;
+        for (int i = 0; i < I; i++) {
+            if (est_successeur(g, i, s)) entrant++;
+            if (est_successeur(g, s, i)) sortant++;
+        }
+        dplus[s] = sortant;
+        dmoins[s] = entrant;
+    }
+    afficher_degres(I, dplus, dmoins);
+}
+
+void afficher_degres(int n, int *dplus, int *dmoins) {
+    printf("Affichage des degres entrants et sortants\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d(E:%d, S:%d)\n", i, dmoins[i], dplus[i]);
+    }
 }
