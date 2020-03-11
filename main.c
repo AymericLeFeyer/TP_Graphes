@@ -8,6 +8,7 @@
 
 int main(int argc, char** argv) {
     MATRICE m;
+    MATRICE m2;
     int *dplus;
     int *dmoins;
 
@@ -24,6 +25,9 @@ int main(int argc, char** argv) {
     for (int i = 0; i < SIZE; i++) {
         printf("%d, %d\n", dplus[i], dmoins[i]);
     }
+    // Copie dans m2
+    copie_graphe(&m, &m2);
+    // print_matrice(&m2);
     
 
     return EXIT_SUCCESS;

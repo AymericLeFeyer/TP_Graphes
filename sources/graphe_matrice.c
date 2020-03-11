@@ -82,10 +82,10 @@ void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins) {
 void copie_graphe(MATRICE *g1, MATRICE *g2) {
     // Allocation et copie de n
     reservation_en_memoire(g1->n, g2);
-    // Copie de M
-    
-
-
-
-
+    // Parcours de g1 et copie dans g2
+    for (int i = 0; i < g1->n; i++) {
+        for (int j = 0; j < g1->n; j++) {
+            g2->M[i][j] = g1->M[i][j];
+        }
+    }
 }
