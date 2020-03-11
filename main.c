@@ -26,10 +26,11 @@ int main(int argc, char** argv) {
     //     printf("%d, %d\n", dplus[i], dmoins[i]);
     // }
     // Copie dans m2
-    copie_graphe(&m, &m2);
+    // copie_graphe(&m, &m2);
     // print_matrice(&m2);
-    ecrire_graphe(&m, "test.txt");
-    
+    // ecrire_graphe(&m, "test.txt");
+    lire_graphe("test.txt", &m);
+    print_matrice(&m);
 
     return EXIT_SUCCESS;
     

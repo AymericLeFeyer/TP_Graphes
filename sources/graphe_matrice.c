@@ -93,12 +93,12 @@ void copie_graphe(MATRICE *g1, MATRICE *g2) {
 void lire_graphe(char*nom, MATRICE *g) {
     FILE* f = NULL;
     f = fopen(nom, "r");
-    fscanf(f, "%d", g->n);
+    fscanf(f, "%d\n", &(g->n));
     for (int i = 0; i < g->n; i++) {
         for (int j = 0; j < g->n; j++) {
-            fprintf(f, "%d ", g->M[i][j]);
+            fscanf(f, "%d ", &(g->M[i][j]));
         }
-        fprintf(f, "\n");
+        fscanf(f, "\n");
     }
 
 }
