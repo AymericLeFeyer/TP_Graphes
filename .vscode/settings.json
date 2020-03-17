@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "graphe_matrice.h": "c",
+        "bouteilles.h": "c"
+    }
+}
