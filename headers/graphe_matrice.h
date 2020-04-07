@@ -5,7 +5,7 @@ typedef struct {
     int **M; // Matrice d'adjacence 
 } MATRICE;
 
-void reservation_en_memoire(int n, MATRICE *g);
+void reservation_en_memoireM(int n, MATRICE *g);
 // Reservation de l'espace memoire necessaire pour representer un graphe comportant n somments. 
 // Cette fonction initialisera egalement le graphe de sorte a ce qu'il soit initialement sans arcs
 
@@ -39,7 +39,7 @@ void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins);
 void copie_graphe(MATRICE *g1, MATRICE *g2);
 // Copie du graphe g1 dans le graphe g2
 
-void lire_graphe(char *nom, MATRICE *g);
+void lire_grapheM(char *nom, MATRICE *g);
 // Lit un graphe depuis le fichier nom et met le contenu dans g
 
 void ecrire_graphe(MATRICE *g, char *nom);

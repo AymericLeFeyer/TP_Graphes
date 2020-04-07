@@ -5,7 +5,7 @@
 
 // Fonctions de manipulation via une matrice d'adjacence
 
-void reservation_en_memoire(int n, MATRICE *g) {
+void reservation_en_memoireM(int n, MATRICE *g) {
     g->n = n;
     // Allocation dynamique du premier tableau
     g->M = malloc(n * sizeof(int*));
@@ -81,7 +81,7 @@ void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins) {
 
 void copie_graphe(MATRICE *g1, MATRICE *g2) {
     // Allocation et copie de n
-    reservation_en_memoire(g1->n, g2);
+    reservation_en_memoireM(g1->n, g2);
     // Parcours de g1 et copie dans g2
     for (int i = 0; i < g1->n; i++) {
         for (int j = 0; j < g1->n; j++) {
@@ -90,7 +90,7 @@ void copie_graphe(MATRICE *g1, MATRICE *g2) {
     }
 }
 
-void lire_graphe(char*nom, MATRICE *g) {
+void lire_grapheM(char*nom, MATRICE *g) {
     FILE* f = NULL;
     f = fopen(nom, "r");
     fscanf(f, "%d\n", &(g->n));
