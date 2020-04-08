@@ -1,7 +1,8 @@
 #include "../headers/tp3.h"
 
 
-void parcours_en_profondeur(LISTE L, MAILLON M) {
+void parcours_en_profondeur(LISTE G, int K) {
+
     
 }
 
@@ -13,14 +14,9 @@ void parcours_en_largeur(LISTE G, int K) {
     int index = 0;
     tab[index] = K;
     index++;
-    printf("%d\n", K);
+    printf("%d ", K);
     pel(G, K, tab, index);
-
-
-    
-
-
-
+    printf("\n");
 }
 
 bool isIn(int* arr, int n, int val) {
@@ -61,7 +57,6 @@ void pel(LISTE G, int n, int tab[], int index) {
         
         m=m->suivant;  
     }
-    printf("\n");
     for (int i = 0; i < ind; i++) {
         pel(G, nouveaux[i], tab, index);
     }
