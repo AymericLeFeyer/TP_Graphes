@@ -261,68 +261,6 @@ int degre(LISTE *g,int n){
 
 
 
-void welsh_wowell(LISTE *g){
-    //etape 1 ranger dans l'ordre décroissant
-    int tab_couleur[g->n];
-    int tab_degre[g->n];
-    int i;
-    for ( i =0;i<(g->n);i++){
-        tab_degre[i]=i;
-        tab_couleur[i]=0;
-            }
-
-    int c;
-    int d;
-    int swap;
-    for (c = 0 ; c < (g->n); c++)
-    {
-    for (d = 0 ; d < (g->n) - c -1 ; d++)
-    {
-      if (degre(g,tab_degre[d]) < degre(g,tab_degre[d+1])) 
-      {
-        swap       = tab_degre[d];
-        tab_degre[d]   = tab_degre[d+1];
-        tab_degre[d+1] = swap;
-      }
-    }
-  }
-
-  //Etape 2 choisir une couleur
-  i=0;
-  int couleur=1;
-  int changement=1;
-  int j=0;
-  while(changement){
-      changement=0;
-      i=0;
-    while(i!=((g->n)+1)){
-      if(tab_couleur[i]==0){
-          
-          if(changement){
-              int peutPas=0;
-              for(j=0;j<(g->n);j++){
-                  if(est_adjacent(g,tab_degre[i],tab_degre[j]) && couleur==tab_couleur[j]){
-                      peutPas=1;
-                  }   
-              }
-              if(!peutPas)tab_couleur[i]=couleur;
-          }
-          else{
-            tab_couleur[i]=couleur;
-            changement=1;
-          }
-    }
-    i++;
-  }
-  couleur++;
-
-  }
-  
-  for (int i =0;i<(g->n);i++){
-        printf("%d(%d)\n",tab_degre[i],tab_couleur[i]);
-    }
-
-}
 
 
 

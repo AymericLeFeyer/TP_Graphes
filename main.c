@@ -40,17 +40,30 @@ int main(int argc, char** argv) {
     // ecrire_graphe(&m, "test.txt");
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
+
+    // TP3 - EX1 : PARCOURS EN PROFONDEUR
     // printf("--Parcours en profondeur--\n");
     // parcours_en_profondeur(g, m);
 
+    // TP3 - EX2 : PARCOURS EN LARGEUR
     // printf("--Parcours en largeur--\n");
     // parcours_en_largeur(g, m);
-
     // printf("--Affichage brut--\n");
     // affichage(&g);
 
-    exercice2_TP2_Matrice("ex2-matrice.txt");
-    exercice2_TP2_Liste("ex2-liste.txt");
+    // TP2 - EX1 : BOUTEILLES
+    // bouteilles* tabB;
+    // int n;
+    // n=0;
+    // tabB= (bouteilles *) malloc(sizeof(bouteilles));
+    // diviser_quantite(14,0,0,&n,tabB);
+
+    // TP2 - EX2 : COURS
+    // coursMatrice("ex2-matrice.txt");
+    // coursListe("ex2-liste.txt");
+
+    // TP2 - EX2 : WELSH WOWELL
+    // welsh_wowell_liste(&g);
 
 
 
