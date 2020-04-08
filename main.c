@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     ajouter_arc(&g2, 2, 5);
     ajouter_arc(&g2, 1, 3);
 
-    
+
 
     // Nouveau graphe
     // reservation_en_memoire(SIZE, &m);
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
 
-   
+
 
     // TP2 - EX1 : BOUTEILLES
     // bouteilles* tabB;
@@ -63,8 +63,8 @@ int main(int argc, char** argv) {
     // diviser_quantite(14,0,0,&n,tabB);
 
     // TP2 - EX2 : COURS
-    coursMatrice("ex2-matrice.txt");
-    coursListe("ex2-liste.txt");
+    // coursMatrice("ex2-matrice.txt");
+    // coursListe("ex2-liste.txt");
 
     // TP2 - EX3 : WELSH POWELL
     // printf("--[Liste] Welsh Powell--\n");
@@ -86,5 +86,5 @@ int main(int argc, char** argv) {
 
 
     return EXIT_SUCCESS;
-    
+
 }

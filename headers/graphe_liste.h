@@ -49,5 +49,5 @@ void lire_graphe(char *nom, LISTE *g);
 /*8. Ecriture du graphe ´ g dans le fichier de nom physique nom :*/
 void ecrit_graphe(LISTE *g, char *nom);
 
- int nb_arrete(LISTE *g);
- int degre(LISTE *g,int n);
+int nb_arrete(LISTE *g);
+int degre(LISTE *g,int n);

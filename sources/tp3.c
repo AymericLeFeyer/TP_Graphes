@@ -17,7 +17,7 @@ void parcours_en_profondeur(LISTE G, int K) {
 
     printf("\n");
 
-    
+
 }
 
 void parcours_en_largeur(LISTE G, int K) {
@@ -51,7 +51,7 @@ bool isIn(int* arr, int n, int val) {
 //             aff(s)
 //             on ajoute s dans tab
 //             si s est le dernier suivant {
-                    // on passe une ligne
+// on passe une ligne
 //              }
 //         }
 //     }
@@ -65,11 +65,11 @@ void pel(LISTE G, int n, int tab[], int index) {
 
         if (!isIn(tab, 1000, m->s)) {
             printf("%d ",m->s);
-            tab[index++] = m->s; 
+            tab[index++] = m->s;
             nouveaux[ind++] = m->s;
         }
-        
-        m=m->suivant;  
+
+        m=m->suivant;
     }
     for (int i = 0; i < ind; i++) {
         pel(G, nouveaux[i], tab, index);
@@ -87,13 +87,13 @@ void pep(LISTE G, int n) {
 
         if (!isIn(tab1, 1000, m->s)) {
             printf("%d ", m->s);
-            tab1[index1++] = m->s; 
+            tab1[index1++] = m->s;
             pep(G, m->s);
             n++;
         }
-        
-        m=m->suivant;  
+
+        m=m->suivant;
     }
-    
+
 
 }

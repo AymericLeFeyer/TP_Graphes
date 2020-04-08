@@ -48,7 +48,7 @@ int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
 
     int quantite_transvider;
     int nouvelle_quantite;
-    if ( (a > 0) ){                
+    if ( (a > 0) ){
         if (b < C2){
             nouvelle_quantite = min(b+min(a,C2),C2);
             quantite_transvider = nouvelle_quantite - b;
@@ -60,7 +60,7 @@ int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
             diviser_quantite(a-quantite_transvider,b,nouvelle_quantite,n,tabB);
         }
     }
-    if ( (b > 0) ){           
+    if ( (b > 0) ){
         if (c < C3){
             nouvelle_quantite = min(c+min(b,C3),C3);
             quantite_transvider = nouvelle_quantite - c;
@@ -72,7 +72,7 @@ int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
             diviser_quantite(nouvelle_quantite,b-quantite_transvider,c,n,tabB);
         }
     }
-    if ( (c > 0) ){           
+    if ( (c > 0) ){
         if (a < C1){
             nouvelle_quantite = min(a+min(c,C1),C1);
             quantite_transvider = nouvelle_quantite - a;
@@ -91,37 +91,40 @@ int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
         return 0;
 }
 
-// Cours (a changer)
+// Cours 
 
 void ajouterHoraire(int* p1, int* p2, int* p3, int np, int nc){
-    if(np == 1){
-        for(int i = 0 ; i < max; i++){
-            if(p1[i]==0 && p2[i]!=nc && p3[i]!=nc){
-                p1[i]=nc;
-                break;
+    switch (np) {
+        case 1:
+            for(int i = 0 ; i < max; i++){
+                if(p1[i]==0 && p2[i]!=nc && p3[i]!=nc){
+                    p1[i]=nc;
+                    break;
+                }
             }
-        }
-    }
-    else{
-        if(np == 2){
+            break;
+        
+        case 2:
             for(int i = 0 ; i < max; i++){
                 if(p2[i]==0 && p1[i]!=nc && p3[i]!=nc){
                     p2[i]=nc;
                     break;
                 }
             }
+            break;
 
-        }
-        else{
-            if(np == 3){
-                for(int i = 0 ; i < max; i++){
-                    if(p3[i] == 0 && p1[i]!=nc && p2[i]!=nc){
-                        p3[i]=nc;
-                        break;
-                    }
+        case 3:
+            for(int i = 0 ; i < max; i++){
+                if(p3[i] == 0 && p1[i]!=nc && p2[i]!=nc){
+                    p3[i]=nc;
+                    break;
                 }
             }
-        }
+
+            break;
+
+        default:
+            break;
     }
 }
 
@@ -160,7 +163,7 @@ void coursListe(char* nom){
     int p2[max] = {0};
     int p3[max] = {0};
 
-    MAILLON * courant=NULL;
+    MAILLON* courant = NULL;
     for(int i = 0; i<g.n ; i++){
         courant = g.listes[i];
         while(courant){
@@ -183,56 +186,56 @@ void welsh_powell_liste(LISTE *g){
     for ( i =0;i<(g->n);i++){
         tab_degre[i]=i;
         tab_couleur[i]=0;
-            }
+    }
 
     int c;
     int d;
     int swap;
     for (c = 0 ; c < (g->n); c++)
     {
-    for (d = 0 ; d < (g->n) - c -1 ; d++)
-    {
-      if (degre(g,tab_degre[d]) < degre(g,tab_degre[d+1])) 
-      {
-        swap       = tab_degre[d];
-        tab_degre[d]   = tab_degre[d+1];
-        tab_degre[d+1] = swap;
-      }
+        for (d = 0 ; d < (g->n) - c -1 ; d++)
+        {
+            if (degre(g,tab_degre[d]) < degre(g,tab_degre[d+1]))
+            {
+                swap       = tab_degre[d];
+                tab_degre[d]   = tab_degre[d+1];
+                tab_degre[d+1] = swap;
+            }
+        }
     }
-  }
 
-  //Etape 2 choisir une couleur
-  i=0;
-  int couleur=1;
-  int changement=1;
-  int j=0;
-  while(changement){
-      changement=0;
-      i=0;
-    while(i!=((g->n)+1)){
-      if(tab_couleur[i]==0){
-          
-          if(changement){
-              int peutPas=0;
-              for(j=0;j<(g->n);j++){
-                  if(est_adjacent(g,tab_degre[i],tab_degre[j]) && couleur==tab_couleur[j]){
-                      peutPas=1;
-                  }   
-              }
-              if(!peutPas)tab_couleur[i]=couleur;
-          }
-          else{
-            tab_couleur[i]=couleur;
-            changement=1;
-          }
+    //Etape 2 choisir une couleur
+    i=0;
+    int couleur=1;
+    int changement=1;
+    int j=0;
+    while(changement){
+        changement=0;
+        i=0;
+        while(i!=((g->n)+1)){
+            if(tab_couleur[i]==0){
+
+                if(changement){
+                    int peutPas=0;
+                    for(j=0;j<(g->n);j++){
+                        if(est_adjacent(g,tab_degre[i],tab_degre[j]) && couleur==tab_couleur[j]){
+                            peutPas=1;
+                        }
+                    }
+                    if(!peutPas)tab_couleur[i]=couleur;
+                }
+                else{
+                    tab_couleur[i]=couleur;
+                    changement=1;
+                }
+            }
+            i++;
+        }
+        couleur++;
+
     }
-    i++;
-  }
-  couleur++;
 
-  }
-  
-  for (int i =0;i<(g->n);i++){
+    for (int i =0;i<(g->n);i++){
         printf("%d(%d)\n",tab_degre[i],tab_couleur[i]);
     }
 
@@ -246,56 +249,56 @@ void welsh_powell_matrice(MATRICE *g){
     for ( i =0;i<(g->n);i++){
         tab_degre[i]=i;
         tab_couleur[i]=0;
-            }
+    }
 
     int c;
     int d;
     int swap;
     for (c = 0 ; c < (g->n); c++)
     {
-    for (d = 0 ; d < (g->n) - c -1 ; d++)
-    {
-      if (degreM(g,tab_degre[d]) < degreM(g,tab_degre[d+1])) 
-      {
-        swap       = tab_degre[d];
-        tab_degre[d]   = tab_degre[d+1];
-        tab_degre[d+1] = swap;
-      }
+        for (d = 0 ; d < (g->n) - c -1 ; d++)
+        {
+            if (degreM(g,tab_degre[d]) < degreM(g,tab_degre[d+1]))
+            {
+                swap       = tab_degre[d];
+                tab_degre[d]   = tab_degre[d+1];
+                tab_degre[d+1] = swap;
+            }
+        }
     }
-  }
 
-  //Etape 2 choisir une couleur
-  i=0;
-  int couleur=1;
-  int changement=1;
-  int j=0;
-  while(changement){
-      changement=0;
-      i=0;
-    while(i!=((g->n)+1)){
-      if(tab_couleur[i]==0){
-          
-          if(changement){
-              int peutPas=0;
-              for(j=0;j<(g->n);j++){
-                  if(est_adjacentM(*g,tab_degre[i],tab_degre[j]) && couleur==tab_couleur[j]){
-                      peutPas=1;
-                  }   
-              }
-              if(!peutPas)tab_couleur[i]=couleur;
-          }
-          else{
-            tab_couleur[i]=couleur;
-            changement=1;
-          }
+    //Etape 2 choisir une couleur
+    i=0;
+    int couleur=1;
+    int changement=1;
+    int j=0;
+    while(changement){
+        changement=0;
+        i=0;
+        while(i!=((g->n)+1)){
+            if(tab_couleur[i]==0){
+
+                if(changement){
+                    int peutPas=0;
+                    for(j=0;j<(g->n);j++){
+                        if(est_adjacentM(*g,tab_degre[i],tab_degre[j]) && couleur==tab_couleur[j]){
+                            peutPas=1;
+                        }
+                    }
+                    if(!peutPas)tab_couleur[i]=couleur;
+                }
+                else{
+                    tab_couleur[i]=couleur;
+                    changement=1;
+                }
+            }
+            i++;
+        }
+        couleur++;
+
     }
-    i++;
-  }
-  couleur++;
 
-  }
-  
-  for (int i =0;i<(g->n);i++){
+    for (int i =0;i<(g->n);i++){
         printf("%d(%d)\n",tab_degre[i],tab_couleur[i]);
     }
 

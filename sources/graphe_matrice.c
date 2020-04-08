@@ -59,7 +59,7 @@ void calcul_degres(MATRICE *g, SID I, int *dplus, int *dmoins) {
         if (est_successeur(g, i, I)) (*dmoins)++;
         if (est_successeur(g, I, i)) (*dplus)++;
     }
-    
+
 }
 
 void calcul_tous_degres(MATRICE *g, int **dplus, int **dmoins) {
@@ -148,5 +148,5 @@ int degreM(MATRICE *g,int n) {
     }
     return nb;
 
-   
+
 }
