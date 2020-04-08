@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     ajouter_arete(&g, 1, 5);
     ajouter_arete(&g, 2, 5);
     ajouter_arete(&g, 1, 3);
-    int m = 4;
+    int m = 5;
     
 
     // Nouveau graphe
@@ -39,6 +39,9 @@ int main(int argc, char** argv) {
     // ecrire_graphe(&m, "test.txt");
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
+    printf("--Parcours en profondeur--\n");
+    parcours_en_profondeur(g, m);
+
     printf("--Parcours en largeur--\n");
     parcours_en_largeur(g, m);
 

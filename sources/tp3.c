@@ -1,7 +1,20 @@
 #include "../headers/tp3.h"
 
+int tab1[10000];
+int index1 = 0;
+
 
 void parcours_en_profondeur(LISTE G, int K) {
+    for (int i = 0; i < 10000; i++) {
+        tab1[i] = -1;
+    }
+    tab1[index1] = K;
+    index1++;
+
+    printf("%d ", K);
+    pep(G, K);
+
+    printf("\n");
 
     
 }
@@ -61,5 +74,25 @@ void pel(LISTE G, int n, int tab[], int index) {
         pel(G, nouveaux[i], tab, index);
     }
 
+
+}
+
+
+void pep(LISTE G, int n) {
+    int nouveaux[1000] = {-1};
+    int ind = 0;
+    MAILLON *m=G.listes[n];
+    while(m){
+
+        if (!isIn(tab1, 1000, m->s)) {
+            printf("%d ", m->s);
+            tab1[index1++] = m->s; 
+            pep(G, m->s);
+            n++;
+        }
+        
+        m=m->suivant;  
+    }
+    
 
 }
