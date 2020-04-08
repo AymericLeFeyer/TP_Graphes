@@ -19,6 +19,18 @@ int main(int argc, char** argv) {
     ajouter_arete(&g, 2, 5);
     ajouter_arete(&g, 1, 3);
     int m = 5;
+
+    MATRICE g2;
+    reservation_en_memoireM(6, &g2);
+    ajouter_arc(&g2, 5, 0);
+    ajouter_arc(&g2, 0, 5);
+    ajouter_arc(&g2, 4, 0);
+    ajouter_arc(&g2, 1, 0);
+    ajouter_arc(&g2, 2, 0);
+    ajouter_arc(&g2, 1, 5);
+    ajouter_arc(&g2, 2, 5);
+    ajouter_arc(&g2, 1, 3);
+
     
 
     // Nouveau graphe
@@ -41,15 +53,7 @@ int main(int argc, char** argv) {
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
 
-    // TP3 - EX1 : PARCOURS EN PROFONDEUR
-    // printf("--Parcours en profondeur--\n");
-    // parcours_en_profondeur(g, m);
-
-    // TP3 - EX2 : PARCOURS EN LARGEUR
-    // printf("--Parcours en largeur--\n");
-    // parcours_en_largeur(g, m);
-    // printf("--Affichage brut--\n");
-    // affichage(&g);
+   
 
     // TP2 - EX1 : BOUTEILLES
     // bouteilles* tabB;
@@ -59,12 +63,26 @@ int main(int argc, char** argv) {
     // diviser_quantite(14,0,0,&n,tabB);
 
     // TP2 - EX2 : COURS
-    // coursMatrice("ex2-matrice.txt");
-    // coursListe("ex2-liste.txt");
+    coursMatrice("ex2-matrice.txt");
+    coursListe("ex2-liste.txt");
 
-    // TP2 - EX2 : WELSH WOWELL
-    // welsh_wowell_liste(&g);
+    // TP2 - EX3 : WELSH POWELL
+    // printf("--[Liste] Welsh Powell--\n");
+    // welsh_powell_liste(&g);
+    // printf("--[Matrice] Welsh Powell--\n");
+    // welsh_powell_matrice(&g2);
 
+
+
+    // TP3 - EX1 : PARCOURS EN PROFONDEUR
+    // printf("--Parcours en profondeur--\n");
+    // parcours_en_profondeur(g, m);
+
+    // TP3 - EX2 : PARCOURS EN LARGEUR
+    // printf("--Parcours en largeur--\n");
+    // parcours_en_largeur(g, m);
+    // printf("--Affichage brut--\n");
+    // affichage(&g);
 
 
     return EXIT_SUCCESS;

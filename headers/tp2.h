@@ -18,10 +18,10 @@ typedef struct{
 #define QUANT_CHERCHER        7
 #define min(X, Y) ( ((X) < (Y)) ? (X) : (Y) )
 
-void tabZero(int* p1,int* p2,int* p3);
-void ajoutHoraire(int* p1,int* p2,int* p3,int np,int nc);
+void ajouterHoraire(int* p1,int* p2,int* p3,int np,int nc);
 int nbPlageHoraire(int* p1,int* p2,int* p3);
 void coursMatrice(char* nom);
 void coursListe(char* nom);
 
-void welsh_wowell_liste(LISTE *g);
+void welsh_powell_liste(LISTE *g);
+void welsh_powell_matrice(MATRICE *g);

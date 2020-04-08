@@ -44,3 +44,7 @@ void lire_grapheM(char *nom, MATRICE *g);
 
 void ecrire_graphe(MATRICE *g, char *nom);
 // Ecrit le contenu du graphe g dans le fichier nom
+
+int est_adjacentM(MATRICE g, int a, int b);
+
+int degreM(MATRICE *g,int n);

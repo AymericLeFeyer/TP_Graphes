@@ -131,3 +131,22 @@ void ecrire_graphe(MATRICE *g, char *nom) {
         fprintf(f, "\n");
     }
 }
+
+int est_adjacentM(MATRICE g, int a, int b) {
+    if (est_successeur(&g, a, b) && est_successeur(&g, b, a)) {
+        return 1;
+    }
+    return 0;
+
+
+}
+
+int degreM(MATRICE *g,int n) {
+    int nb=0;
+    for (int i = 0; i < g->n; i++) {
+        if (g->M[i][n]) nb++;
+    }
+    return nb;
+
+   
+}
