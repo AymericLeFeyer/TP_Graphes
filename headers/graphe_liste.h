@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+
 #include <stdbool.h>
 #include <time.h>
 
@@ -8,6 +7,7 @@ typedef int SID;
 typedef struct maillon {
     SID s;
     struct maillon *suivant; /* Pointeur vers le maillon suivant */
+    int poids;
 } MAILLON;
 
 typedef struct {
@@ -20,7 +20,7 @@ typedef struct {
 R´eservation de l’espace m´emoire n´ecessaire pour repr´esenter un graphe
 comportant n sommets. Cette fonction initialisera ´egalement le graphe
 de sorte `a ce qu’il soit initialement sans arˆete :*/
-void reservation_en_memoire(int n, LISTE *g);
+void reservation_en_memoireL(int n, LISTE *g);
 
 /*2. Lib´eration de la m´emoire occup´ee par le graphe g :*/
 void liberation_memoire(LISTE *g);
@@ -36,6 +36,8 @@ void retirer_arete(LISTE *g, SID i, SID j);
 /*5. Affichage d’un graphe sous forme textuelle (une ligne par sommet avec
 le sommet en d´ebut de ligne et la liste de ses sommets adjacents ensuite) :*/
 void affichage(LISTE *g);
+
+void ajouter_poidsL(LISTE *g, SID i, SID j);
 
 /*6. Fonction qui retourne 1 si j est adjacent `a i dans le graphe g, 0 sinon :*/
 int est_adjacent(LISTE *g, SID i, SID j);

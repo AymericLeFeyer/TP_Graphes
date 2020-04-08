@@ -1,9 +1,17 @@
 #include "../headers/graphe_liste.h"
 
 
-void reservation_en_memoire(int n, LISTE *g){
-  g->listes=malloc(n*sizeof(MAILLON));
+void reservation_en_memoireL(int n, LISTE *g){
     g->n=n;
+    g->listes=(MAILLON **)malloc(n*sizeof(MAILLON *));
+    for (int i = 0;i<n;i++){
+        g->listes[i]=(MAILLON *)malloc(sizeof(MAILLON));
+        if(g->listes[i]){
+            g->listes[i]->s = -1;
+            g->listes[i]->poids = -1;
+            g->listes[i]->suivant = NULL;
+        }
+    }
 }
 
 void liberation_memoire(LISTE *g){
@@ -122,18 +130,54 @@ void affichage(LISTE *g){
 
 }
 
-void lire_graphe(char *nom, LISTE *g){
-    FILE   *fichier;
-    int i ;
-    int a ;
-    int b ;
-
-    fichier=fopen(nom,"r");
-      fscanf(fichier," %d \n",&i);
-      g->n=i;
-        while(fscanf(fichier," %d %d \n ", &a,&b)!=EOF){
-            ajouter_arete(g,a,b);
+void ajouter_poidsL(LISTE *g, SID i, SID j){
+    MAILLON* courant = g->listes[i];
+    if(courant == NULL){
+        g->listes[i]=(MAILLON *)calloc(1,sizeof(MAILLON));
+        g->listes[i]->s = j;
+        g->listes[i]->poids = 1;
+    }else{
+        while(courant != NULL){
+            if(courant->s == j){
+                courant->poids = courant->poids + 1;
+                return;
+            }
+            courant = courant->suivant;
         }
+    }
+}
+
+void lire_graphe(char *nom, LISTE *g){
+    char temp[64];
+    int n,i,j;
+    FILE *f=fopen(nom,"r");
+    if (f != NULL){
+        fgets(temp,64,f);
+        sscanf(temp,"%d",&n);
+        reservation_en_memoireL(n, g);
+        while (fgets(temp,64,f)!=NULL){
+            sscanf(temp,"%d",&i);
+            for(int k=1;k<64;k++){
+                if(temp[k]=='\n' || temp[k]=='\0'){
+                    break;
+                }
+                if(temp[k]!=' '){
+                    sscanf(temp+k,"%d",&j);
+                    if(est_adjacent(g, i, j)==1){
+                        ajouter_poidsL(g, i, j);
+                    }else{
+                        ajouter_arete(g, i, j);
+                    }
+                    // printf("%d %d\n",i,j);
+                }
+            }
+            // printf("\n");
+        }
+        fclose(f);
+    }
+    else{
+        printf("Impossible d'ouvrir le fichier %s",nom);
+    }
 }
 
 void ecrit_graphe(LISTE *g, char *nom){
@@ -159,7 +203,7 @@ int TP2_EXO2_GRAPHE(){
     //TP2 EXO 2
     LISTE G;
     int n=6;
-    reservation_en_memoire(n,&G);
+    reservation_en_memoireL(n,&G);
    
        
     ajouter_arete(&G,0,3);
@@ -181,7 +225,7 @@ int TP2_EXO2_GRAPHE(){
 
 LISTE graphe_alea_toire(int n ,int m){
         LISTE G;
-    reservation_en_memoire(n,&G);
+    reservation_en_memoireL(n,&G);
    srand (time (NULL));
    while(nb_arrete(&G)!=m){
        int a=(int)(rand() / (double)RAND_MAX * (n));
@@ -292,7 +336,7 @@ void welsh_wowell(LISTE *g){
 int main_test(){
         LISTE G;
     int n=6;
-    reservation_en_memoire(n,&G);
+    reservation_en_memoireL(n,&G);
    
     
    ajouter_arete(&G,1,3);

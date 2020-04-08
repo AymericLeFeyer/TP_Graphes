@@ -1,4 +1,5 @@
 #include "../headers/tp3.h"
+#include <stdbool.h>
 
 int tab1[10000];
 int index1 = 0;

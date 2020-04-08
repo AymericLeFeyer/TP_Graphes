@@ -3,13 +3,14 @@
 
 #include "sources/graphe_matrice.c"
 #include "sources/graphe_liste.c"
+#include "sources/tp2.c"
 #include "sources/tp3.c"
 
 #define SIZE 4
 
 int main(int argc, char** argv) {
     LISTE g;
-    reservation_en_memoire(6, &g);
+    reservation_en_memoireL(6, &g);
     ajouter_arete(&g, 5, 0);
     ajouter_arete(&g, 4, 0);
     ajouter_arete(&g, 1, 0);
@@ -39,14 +40,19 @@ int main(int argc, char** argv) {
     // ecrire_graphe(&m, "test.txt");
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
-    printf("--Parcours en profondeur--\n");
-    parcours_en_profondeur(g, m);
+    // printf("--Parcours en profondeur--\n");
+    // parcours_en_profondeur(g, m);
 
-    printf("--Parcours en largeur--\n");
-    parcours_en_largeur(g, m);
+    // printf("--Parcours en largeur--\n");
+    // parcours_en_largeur(g, m);
 
-    printf("--Affichage brut--\n");
-    affichage(&g);
+    // printf("--Affichage brut--\n");
+    // affichage(&g);
+
+    exercice2_TP2_Matrice("ex2-matrice.txt");
+    exercice2_TP2_Liste("ex2-liste.txt");
+
+
 
     return EXIT_SUCCESS;
     

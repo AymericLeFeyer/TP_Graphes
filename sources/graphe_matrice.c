@@ -90,17 +90,34 @@ void copie_graphe(MATRICE *g1, MATRICE *g2) {
     }
 }
 
-void lire_grapheM(char*nom, MATRICE *g) {
-    FILE* f = NULL;
-    f = fopen(nom, "r");
-    fscanf(f, "%d\n", &(g->n));
-    for (int i = 0; i < g->n; i++) {
-        for (int j = 0; j < g->n; j++) {
-            fscanf(f, "%d ", &(g->M[i][j]));
-        }
-        fscanf(f, "\n");
+void ajouter_poids(MATRICE *g, SID i, SID j){
+    if(g->M[i][j] != 0){
+        g->M[i][j] = g->M[i][j] + 1;
     }
+}
 
+void lire_grapheM(char *nom, MATRICE *g){
+    char temp[64];
+    int n,i,j;
+    FILE *f=NULL;
+    f=fopen(nom,"r");
+    if (f != NULL){
+        fgets(temp,64,f);
+        sscanf(temp,"%d",&n);
+        reservation_en_memoireM(n, g);
+        while (fgets(temp,64,f)!=NULL){
+            sscanf(temp,"%d %d",&i,&j);
+            if(est_successeur(g, i, j)==1){
+                ajouter_poids(g, i, j);
+            }else{
+                ajouter_arc(g, i, j);
+            }
+        }
+        fclose(f);
+    }
+    else{
+        printf("Impossible d'ouvrir le fichier %s",nom);
+    }
 }
 
 void ecrire_graphe(MATRICE *g, char *nom) {
