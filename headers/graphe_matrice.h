@@ -1,22 +1,24 @@
 // BAUDELET Conrad (git @Conrad523)
 // LE FEYER Aymeric (git @AymericLeFeyer)
 
+#ifndef SID
 typedef int SID;
+#endif
 
 typedef struct {
     int n; // Nombre de somments
-    int **M; // Matrice d'adjacence 
+    int **M; // Matrice d'adjacence
 } MATRICE;
 
 void reservation_en_memoireM(int n, MATRICE *g);
-// Reservation de l'espace memoire necessaire pour representer un graphe comportant n somments. 
+// Reservation de l'espace memoire necessaire pour representer un graphe comportant n somments.
 // Cette fonction initialisera egalement le graphe de sorte a ce qu'il soit initialement sans arcs
 
 void print_matrice(MATRICE *g);
 // Affichage de la matrice
 
 void liberation_matrice(MATRICE *g);
-// Liberation en memoire de la matrice 
+// Liberation en memoire de la matrice
 
 void ajouter_arc(MATRICE *g, SID i, SID j);
 // Ajoute un arc entre les somments i et j s'il n'existe pas deja

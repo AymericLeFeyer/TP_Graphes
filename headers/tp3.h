@@ -1,7 +1,7 @@
 // BAUDELET Conrad (git @Conrad523)
 // LE FEYER Aymeric (git @AymericLeFeyer)
 
-#include <stdbool.h>
+
 
 void parcours_en_profondeur(LISTE G, int K);
 void parcours_en_largeur(LISTE G, int K);

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
 
 #include "sources/graphe_matrice.c"
 #include "sources/graphe_liste.c"
@@ -8,10 +10,13 @@
 
 #define SIZE 4
 
+
 int main(int argc, char** argv) {
+    printf("TP Graphes et Algorithmes\nBAUDELET Conrad & LE FEYER Aymeric\n");
     int alive = 1;
 
     LISTE g, g3;
+
     reservation_en_memoireL(6, &g);
     ajouter_arete(&g, 5, 0);
     ajouter_arete(&g, 4, 0);
@@ -89,7 +94,7 @@ int main(int argc, char** argv) {
                 tabB= (bouteilles *) malloc(sizeof(bouteilles));
                 diviser_quantite(14,0,0,&n,tabB);
                 break;
-            
+
             case 2:
                 // TP2 - EX2 : COURS
                 printf("\n--Cours--\n");
@@ -119,7 +124,7 @@ int main(int argc, char** argv) {
 
             case 6:
                 // TP3 - EX3 : CONNEXITE
-                printf("Cet exercice n'a pas été réalisé\n");
+                printf("Cet exercice n'a pas ete realise\n");
                 break;
 
             case 7:
