@@ -1,3 +1,6 @@
+// BAUDELET Conrad (git @Conrad523)
+// LE FEYER Aymeric (git @AymericLeFeyer)
+
 typedef int SID;
 
 typedef struct {

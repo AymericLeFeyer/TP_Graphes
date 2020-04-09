@@ -1,3 +1,6 @@
+// BAUDELET Conrad (git @Conrad523)
+// LE FEYER Aymeric (git @AymericLeFeyer)
+
 #include <stdlib.h>
 #include <stdio.h>
 

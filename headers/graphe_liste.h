@@ -1,3 +1,5 @@
+// BAUDELET Conrad (git @Conrad523)
+// LE FEYER Aymeric (git @AymericLeFeyer)
 
 #include <stdbool.h>
 #include <time.h>

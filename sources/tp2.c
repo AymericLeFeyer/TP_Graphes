@@ -1,7 +1,11 @@
+// BAUDELET Conrad (git @Conrad523)
+// LE FEYER Aymeric (git @AymericLeFeyer)
+
 #include "../headers/tp2.h"
 
 // Bouteilles (repris depuis le code en cpp)
 
+// Complexite : O(n)
 void ajouterTaille(bouteilles* t,int n){
     bouteilles * t2;
     t2 = (bouteilles*) malloc(n*sizeof(bouteilles));
@@ -13,7 +17,9 @@ void ajouterTaille(bouteilles* t,int n){
     t=t2;
 }
 
+// Complexite : O(1)
 bouteilles initB(int a, int b, int c){
+    // Initialisation des bouteilles avec les valeurs a b et c
     bouteilles bouteille;
     bouteille.B1=a;
     bouteille.B2=b;
@@ -21,19 +27,26 @@ bouteilles initB(int a, int b, int c){
     return bouteille;
 }
 
+// Complexite : O(1)
 void afficherBouteilles(bouteilles b){
+    // Affichage des bouteilles
     printf("(%d , %d , %d)", b.B1, b.B2, b.B3);
 }
 
+// Complexite : O(n)
 void afficherTab(bouteilles *t,int n){
+    // Affichage de toutes les bouteilles avec l'appel de afficherBouteilles(bouteilles b)
     for (int i=0;i<n;i++){
         afficherBouteilles(t[i]);
     }
     printf("\n\n");
 }
 
+// Complexite : O(n)
 int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
+    // On init les bouteilles
     bouteilles bouteille = initB(a,b,c);
+    // On parcours
     for (int i = 0 ; i < *n ; i++){
         if ( (tabB[i].B1 == a) && (tabB[i].B2 == b) && (tabB[i].B3 == c) ){
             printf(" < ");
@@ -93,8 +106,10 @@ int diviser_quantite(int a, int b, int c, int *n, bouteilles* tabB){
 
 // Cours 
 
+// Complexite : O(n)
 void ajouterHoraire(int* p1, int* p2, int* p3, int np, int nc){
     switch (np) {
+        // En fonction de np, on ajoute a p1 p2 ou p3 la valeur nc si c'est possible
         case 1:
             for(int i = 0 ; i < max; i++){
                 if(p1[i]==0 && p2[i]!=nc && p3[i]!=nc){
@@ -128,7 +143,9 @@ void ajouterHoraire(int* p1, int* p2, int* p3, int np, int nc){
     }
 }
 
+// Complexite : O(n)
 int nbPlageHoraire(int* p1,int* p2,int* p3){
+    // Compte le nombre de plages horaires
     int nb=0;
     int i;
     for(i=0; i<max;i++){
@@ -139,13 +156,16 @@ int nbPlageHoraire(int* p1,int* p2,int* p3){
     return nb;
 }
 
+// Complexite : O(n^2)
 void coursMatrice(char* nom){
     MATRICE g;
     lire_grapheM(nom, &g);
+    // Initialisation des tableaux
     int p1[max] = {0};
     int p2[max] = {0};
     int p3[max] = {0};
 
+    // On parcours les matrices et on ajoute les horaires
     for(int i = 0; i<g.n; i++){
         for(int j=0; j<g.n; j++){
             for(int k=0; k<g.M[i][j]; k++){
@@ -156,9 +176,11 @@ void coursMatrice(char* nom){
     printf("[Matrice] Nombre de jours minimum necessaires : %d\n",nbPlageHoraire(p1,p2,p3));
 }
 
+// Complexite : O(n^2)
 void coursListe(char* nom){
     LISTE g;
     lire_graphe(nom, &g);
+    // On init les tableaux
     int p1[max] = {0};
     int p2[max] = {0};
     int p3[max] = {0};

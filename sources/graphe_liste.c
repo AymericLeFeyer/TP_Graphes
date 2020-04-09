@@ -1,3 +1,6 @@
+// BAUDELET Conrad (git @Conrad523)
+// LE FEYER Aymeric (git @AymericLeFeyer)
+
 #include "../headers/graphe_liste.h"
 
 // Pour les cours
