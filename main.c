@@ -9,7 +9,7 @@
 #define SIZE 4
 
 int main(int argc, char** argv) {
-    LISTE g;
+    LISTE g, g3;
     reservation_en_memoireL(6, &g);
     ajouter_arete(&g, 5, 0);
     ajouter_arete(&g, 4, 0);
@@ -18,6 +18,15 @@ int main(int argc, char** argv) {
     ajouter_arete(&g, 1, 5);
     ajouter_arete(&g, 2, 5);
     ajouter_arete(&g, 1, 3);
+
+    reservation_en_memoire2(6, &g3);
+    ajouter_arete(&g3, 5, 0);
+    ajouter_arete(&g3, 4, 0);
+    ajouter_arete(&g3, 1, 0);
+    ajouter_arete(&g3, 2, 0);
+    ajouter_arete(&g3, 1, 5);
+    ajouter_arete(&g3, 2, 5);
+    ajouter_arete(&g3, 1, 3);
     int m = 5;
 
     MATRICE g2;
@@ -56,33 +65,35 @@ int main(int argc, char** argv) {
 
 
     // TP2 - EX1 : BOUTEILLES
-    // bouteilles* tabB;
-    // int n;
-    // n=0;
-    // tabB= (bouteilles *) malloc(sizeof(bouteilles));
-    // diviser_quantite(14,0,0,&n,tabB);
+    printf("--Bouteilles--\n");
+    bouteilles* tabB;
+    int n;
+    n=0;
+    tabB= (bouteilles *) malloc(sizeof(bouteilles));
+    diviser_quantite(14,0,0,&n,tabB);
 
     // TP2 - EX2 : COURS
-    // coursMatrice("ex2-matrice.txt");
-    // coursListe("ex2-liste.txt");
+    printf("\n--Cours--\n");
+    coursMatrice("ex2-matrice.txt");
+    coursListe("ex2-liste.txt");
 
     // TP2 - EX3 : WELSH POWELL
-    // printf("--[Liste] Welsh Powell--\n");
-    // welsh_powell_liste(&g);
-    // printf("--[Matrice] Welsh Powell--\n");
-    // welsh_powell_matrice(&g2);
+    printf("--[Liste] Welsh Powell--\n");
+    welsh_powell_liste(&g);
+    printf("--[Matrice] Welsh Powell--\n");
+    welsh_powell_matrice(&g2);
 
 
 
     // TP3 - EX1 : PARCOURS EN PROFONDEUR
-    // printf("--Parcours en profondeur--\n");
-    // parcours_en_profondeur(g, m);
+    printf("--Parcours en profondeur--\n");
+    parcours_en_profondeur(g3, m);
 
     // TP3 - EX2 : PARCOURS EN LARGEUR
-    // printf("--Parcours en largeur--\n");
-    // parcours_en_largeur(g, m);
-    // printf("--Affichage brut--\n");
-    // affichage(&g);
+    printf("--Parcours en largeur--\n");
+    parcours_en_largeur(g3, m);
+    printf("--Affichage brut--\n");
+    affichage(&g3);
 
 
     return EXIT_SUCCESS;

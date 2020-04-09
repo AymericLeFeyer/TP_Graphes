@@ -21,6 +21,7 @@ R´eservation de l’espace m´emoire n´ecessaire pour repr´esenter un graphe
 comportant n sommets. Cette fonction initialisera ´egalement le graphe
 de sorte `a ce qu’il soit initialement sans arˆete :*/
 void reservation_en_memoireL(int n, LISTE *g);
+void reservation_en_memoire2(int n, LISTE *g);
 
 /*2. Lib´eration de la m´emoire occup´ee par le graphe g :*/
 void liberation_memoire(LISTE *g);

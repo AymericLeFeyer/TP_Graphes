@@ -1,9 +1,9 @@
 #include "../headers/graphe_liste.h"
 
-
+// Pour les cours
 void reservation_en_memoireL(int n, LISTE *g){
     g->n=n;
-    g->listes=(MAILLON **)malloc(n*sizeof(MAILLON *));
+    g->listes=malloc(n*sizeof(MAILLON));
     for (int i = 0;i<n;i++){
         g->listes[i]=(MAILLON *)malloc(sizeof(MAILLON));
         if(g->listes[i]){
@@ -13,6 +13,15 @@ void reservation_en_memoireL(int n, LISTE *g){
         }
     }
 }
+
+// Pour les parcours
+void reservation_en_memoire2(int n, LISTE *g){
+  g->listes=malloc(n*sizeof(MAILLON));
+  g->n=n;
+}
+
+
+
 
 void liberation_memoire(LISTE *g){
     free(g);
