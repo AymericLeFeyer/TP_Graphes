@@ -9,6 +9,7 @@
 #define SIZE 4
 
 int main(int argc, char** argv) {
+    printf("TP Graphes et Algorithmes\nBAUDELET Conrad & LE FEYER Aymeric\n");
     int alive = 1;
 
     LISTE g, g3;
