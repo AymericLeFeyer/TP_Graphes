@@ -1,10 +1,9 @@
 // BAUDELET Conrad (git @Conrad523)
 // LE FEYER Aymeric (git @AymericLeFeyer)
 
-#include <stdbool.h>
-#include <time.h>
-
+#ifdef SID
 typedef int SID;
+#endif
 
 typedef struct maillon {
     SID s;
@@ -22,6 +21,7 @@ typedef struct {
 R´eservation de l’espace m´emoire n´ecessaire pour repr´esenter un graphe
 comportant n sommets. Cette fonction initialisera ´egalement le graphe
 de sorte `a ce qu’il soit initialement sans arˆete :*/
+// Il y a en deux, nous avons eu des soucis entre Windows et Linux
 void reservation_en_memoireL(int n, LISTE *g);
 void reservation_en_memoire2(int n, LISTE *g);
 

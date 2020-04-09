@@ -2,7 +2,6 @@
 // LE FEYER Aymeric (git @AymericLeFeyer)
 
 #include "../headers/tp3.h"
-#include <stdbool.h>
 
 int tab1[10000];
 int index1 = 0;
@@ -116,7 +115,7 @@ void pep(LISTE G, int n) {
     // Liste des nouvelles valeurs
     int nouveaux[1000] = {-1};
     int ind = 0;
-    // Maillon 
+    // Maillon
     MAILLON *m=G.listes[n];
     while(m){
         // Tant que m existe
@@ -136,6 +135,6 @@ void pep(LISTE G, int n) {
 }
 
 LISTE graphe_reduit(LISTE g) {
-    // Aucune idee 
+    // Aucune idee
     // ¯\_(ツ)_/¯
 }

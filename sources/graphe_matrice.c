@@ -1,9 +1,6 @@
 // BAUDELET Conrad (git @Conrad523)
 // LE FEYER Aymeric (git @AymericLeFeyer)
 
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "../headers/graphe_matrice.h"
 
 // Fonctions de manipulation via une matrice d'adjacence
@@ -15,7 +12,13 @@ void reservation_en_memoireM(int n, MATRICE *g) {
     // Allocation dynamique pour chaque tableau dans le tableau
     for (int i = 0; i < n; i++) {
         g->M[i] = malloc(n * sizeof(int));
+
+        for (int j = 0; j < n; j++) {
+            g->M[i][j] = 0;
+        }
+
     }
+
 }
 
 void print_matrice(MATRICE *g) {

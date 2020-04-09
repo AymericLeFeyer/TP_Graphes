@@ -19,8 +19,15 @@ void reservation_en_memoireL(int n, LISTE *g){
 
 // Pour les parcours
 void reservation_en_memoire2(int n, LISTE *g){
-  g->listes=malloc(n*sizeof(MAILLON));
   g->n=n;
+  g->listes=malloc(n*sizeof(MAILLON));
+  for (int i = 0;i<n;i++){
+        g->listes[i]=(MAILLON *)malloc(sizeof(MAILLON));
+        g->listes[i]->suivant = NULL;
+        g->listes[i]->s = -1;
+
+
+    }
 }
 
 
@@ -132,6 +139,7 @@ void affichage(LISTE *g){
     for(i=0;i<(g->n);i++){
         printf("%d(%d)",i,degre(g,i));
         MAILLON *m=g->listes[i];
+        m = m->suivant;
         while(m){
             printf("   %d  ",m->s);
             m=m->suivant;
@@ -287,18 +295,18 @@ int main_test(){
         LISTE G;
     int n=6;
     reservation_en_memoireL(n,&G);
-   
-    
+
+
    ajouter_arete(&G,1,3);
    ajouter_arete(&G,1,5);
    ajouter_arete(&G,1,4);
    ajouter_arete(&G,1,5);
-    
+
     int i_adj=1;
     int j_adj=2;
     printf("\n%d adjacent à %d ? %d\n\n",i_adj,j_adj,est_adjacent(&G,i_adj,j_adj));
-    
-    
+
+
     ecrit_graphe(&G,"fichier.txt");
     lire_graphe("fichier.txt",&G);
      affichage(&G);
