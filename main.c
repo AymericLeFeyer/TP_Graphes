@@ -9,6 +9,8 @@
 #define SIZE 4
 
 int main(int argc, char** argv) {
+    int alive = 1;
+
     LISTE g, g3;
     reservation_en_memoireL(6, &g);
     ajouter_arete(&g, 5, 0);
@@ -61,40 +63,75 @@ int main(int argc, char** argv) {
     // ecrire_graphe(&m, "test.txt");
     // lire_graphe("test.txt", &m);
     // print_matrice(&m);
+    int choix = 0;
 
+    while (alive) {
+        printf("-----------\n");
+        printf("0 ~ QUITTER\n");
+        printf("1 ~ TP2 - EX1 : BOUTEILLES\n");
+        printf("2 ~ TP2 - EX2 : COURS\n");
+        printf("3 ~ TP2 - EX3 : WELSH POWELL\n");
+        printf("4 ~ TP3 - EX1 : PARCOURS EN PROFONDEUR\n");
+        printf("5 ~ TP3 - EX2 : PARCOURS EN LARGEUR\n");
+        printf("6 ~ TP3 - EX3 : CONNEXITE\n");
+        printf("7 ~ AFFICHAGE DU GRAPHE\n");
+        printf("Que faire ? \n");
+        printf("-----------\n");
+        scanf("%d", &choix);
+        switch (choix)
+        {
+            case 1:
+                // TP2 - EX1 : BOUTEILLES
+                printf("--Bouteilles--\n");
+                bouteilles* tabB;
+                int n;
+                n=0;
+                tabB= (bouteilles *) malloc(sizeof(bouteilles));
+                diviser_quantite(14,0,0,&n,tabB);
+                break;
+            
+            case 2:
+                // TP2 - EX2 : COURS
+                printf("\n--Cours--\n");
+                coursMatrice("ex2-matrice.txt");
+                coursListe("ex2-liste.txt");
+                break;
 
+            case 3:
+                // TP2 - EX3 : WELSH POWELL
+                printf("--[Liste] Welsh Powell--\n");
+                welsh_powell_liste(&g);
+                printf("--[Matrice] Welsh Powell--\n");
+                welsh_powell_matrice(&g2);
+                break;
 
-    // TP2 - EX1 : BOUTEILLES
-    printf("--Bouteilles--\n");
-    bouteilles* tabB;
-    int n;
-    n=0;
-    tabB= (bouteilles *) malloc(sizeof(bouteilles));
-    diviser_quantite(14,0,0,&n,tabB);
+            case 4:
+                // TP3 - EX1 : PARCOURS EN PROFONDEUR
+                printf("--Parcours en profondeur--\n");
+                parcours_en_profondeur(g3, m);
+                break;
 
-    // TP2 - EX2 : COURS
-    printf("\n--Cours--\n");
-    coursMatrice("ex2-matrice.txt");
-    coursListe("ex2-liste.txt");
+            case 5:
+                // TP3 - EX2 : PARCOURS EN LARGEUR
+                printf("--Parcours en largeur--\n");
+                parcours_en_largeur(g3, m);
+                break;
 
-    // TP2 - EX3 : WELSH POWELL
-    printf("--[Liste] Welsh Powell--\n");
-    welsh_powell_liste(&g);
-    printf("--[Matrice] Welsh Powell--\n");
-    welsh_powell_matrice(&g2);
+            case 6:
+                // TP3 - EX3 : CONNEXITE
+                printf("Cet exercice n'a pas été réalisé\n");
+                break;
 
+            case 7:
+                // Affichage du graphe
+                affichage(&g3);
+                break;
 
-
-    // TP3 - EX1 : PARCOURS EN PROFONDEUR
-    printf("--Parcours en profondeur--\n");
-    parcours_en_profondeur(g3, m);
-
-    // TP3 - EX2 : PARCOURS EN LARGEUR
-    printf("--Parcours en largeur--\n");
-    parcours_en_largeur(g3, m);
-    printf("--Affichage brut--\n");
-    affichage(&g3);
-
+            default:
+                alive = 0;
+                break;
+        }
+    }
 
     return EXIT_SUCCESS;
 
